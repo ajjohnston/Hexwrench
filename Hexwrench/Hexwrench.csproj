@@ -53,6 +53,8 @@
     <Compile Include="Components\Input\InputComponent.cs" />
     <Compile Include="GameObjects\Scene.cs" />
     <Compile Include="Components\Graphics\Background.cs" />
+    <Compile Include="Components\Colliders\ColliderComponent.cs" />
+    <Compile Include="Components\Colliders\RectangleCollider.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -74,5 +76,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Components\Logic\" />
     <Folder Include="Components\Input\" />
+    <Folder Include="Components\Colliders\" />
   </ItemGroup>
 </Project>

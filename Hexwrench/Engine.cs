@@ -41,14 +41,13 @@ namespace Hexwrench
 		protected override bool BeginDraw ()
 		{
 			Hexwrench.Draw.SpriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			return base.BeginDraw();
 		}
 
 		protected override void Draw (GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
-
 			if (CurrentScene != null) {
 				CurrentScene.Draw(gameTime);
 			}
