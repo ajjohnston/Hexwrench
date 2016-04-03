@@ -9,15 +9,19 @@ namespace Hexwrench
 	public class Config
 	{
 		public static Config Instance = new Config();
-		string filePath;
-		Dictionary<string, string> fileContents;
+
+		private string filePath;
+		private Dictionary<string, string> fileContents;
 		private Config () {} 
-		public void Initialize (string path) {
+
+		public void Initialize (string path, int pollSeconds = 0) {
 			filePath = path;
 			readFile();
-			var timer = new System.Threading.Timer((e) => {
-				readFile();
-			}, null, 0, (int)(TimeSpan.FromSeconds(30).TotalMilliseconds));
+			if (pollSeconds > 0) {
+				new System.Threading.Timer((e) => {
+					readFile();
+				}, null, 0, (int)(TimeSpan.FromSeconds(pollSeconds).TotalMilliseconds));
+			}
 		}
 
 		private void readFile ()
