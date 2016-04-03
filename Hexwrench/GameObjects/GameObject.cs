@@ -12,6 +12,8 @@ namespace Hexwrench
 		public List<Component> Components;
 		public Vector2 Position;
 
+		public ColliderComponent Collider { get; protected set; }
+
 		public List<string> Tags { get; private set; }
 
 		public GameObject (Vector2 position)
@@ -60,6 +62,30 @@ namespace Hexwrench
 		{
 			component.Removed(this);
 			Components.Remove(component);
+		}
+
+		public bool CollidesWith (GameObject other)
+		{
+			if (other == null || Collider == null) {
+				return false;
+			}
+
+			return Collider.Collides(other.Collider);
+		}
+
+		public GameObject CollidesWith (string objectTag)
+		{
+			if (Collider == null) {
+				return null;
+			}
+
+			foreach (GameObject gameObject in Scene.GameObjects.Where(x => x.Tags.Contains(objectTag))) {
+				if (this.CollidesWith(gameObject)) {
+					return gameObject;
+				}
+			}
+
+			return null;
 		}
 	}
 }
