@@ -28,7 +28,7 @@ namespace Hexwrench
 			Visible = visible;
 		}
 
-		public abstract void Draw (GameTime gameTime);
+		public abstract void Draw (SpriteBatch spriteBatch, GameTime gameTime);
 	}
 }
 

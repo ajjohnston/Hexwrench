@@ -1,26 +1,27 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using System.Linq;
 
 namespace Hexwrench
 {
-	public class GameObject
+    public class GameObject
 	{
-		public Scene Scene { get; private set; }
-
-		public List<Component> Components;
-		public Vector2 Position;
-
+		public Layer Layer { get; private set; }
+        public Vector2 Position;
+        public List<Component> Components;
 		public ColliderComponent Collider { get; protected set; }
-
 		public List<string> Tags { get; private set; }
+        public bool Active;
+        public bool Visible;
 
-		public GameObject (Vector2 position)
+        public GameObject (Vector2 position, bool active = true, bool visible = true)
 		{
 			Position = position;
 			Components = new List<Component>();
 			Tags = new List<string>();
+            Active = active;
+            Visible = visible;
 		}
 
 		public GameObject () : this(Vector2.Zero)
@@ -35,21 +36,21 @@ namespace Hexwrench
 			}
 		}
 
-		public virtual void Draw (GameTime gameTime)
+		public virtual void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
 			foreach (GraphicsComponent component in Components.OfType<GraphicsComponent>().Where(x => x.Visible)) {
-				component.Draw(gameTime);
+				component.Draw(spriteBatch, gameTime);
 			}
 		}
 
-		public virtual void Added (Scene scene)
+		public virtual void Added (Layer layer)
 		{
-			Scene = scene;
+			Layer = layer;
 		}
 
-		public virtual void Removed (Scene scene)
+		public virtual void Removed (Layer layer)
 		{
-			Scene = null;
+			Layer = null;
 		}
 
 		public virtual void Add (Component component)
@@ -79,7 +80,7 @@ namespace Hexwrench
 				return null;
 			}
 
-			foreach (GameObject gameObject in Scene.GameObjects.Where(x => x.Tags.Contains(objectTag))) {
+			foreach (GameObject gameObject in Layer.GameObjects.Where(x => x.Tags.Contains(objectTag))) {
 				if (this.CollidesWith(gameObject)) {
 					return gameObject;
 				}

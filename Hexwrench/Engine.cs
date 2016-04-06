@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Hexwrench
 {
-	public class Engine : Game
+    public class Engine : Game
 	{
 		static public Engine Instance { get; private set; }
 
@@ -22,11 +21,10 @@ namespace Hexwrench
 
 		protected override void Initialize ()
 		{
-			Services.AddService(typeof(GraphicsDeviceManager), Graphics);
-
 			Hexwrench.Draw.Initialize(this);
+            Services.AddService(typeof(GraphicsDeviceManager), Graphics);
 
-			base.Initialize();
+            base.Initialize();
 		}
 
 		protected override void Update (GameTime gameTime)
@@ -48,7 +46,9 @@ namespace Hexwrench
 
 		protected override void Draw (GameTime gameTime)
 		{
-			if (CurrentScene != null) {
+            GraphicsDevice.SetRenderTarget(null);
+
+            if (CurrentScene != null) {
 				CurrentScene.Draw(gameTime);
 			}
 

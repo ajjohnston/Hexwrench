@@ -30,13 +30,13 @@ namespace Hexwrench
 			Position = new Vector2(Position.X % Texture.Width, Position.Y % Texture.Height);
 		}
 
-		public override void Draw (GameTime gameTime)
+		public override void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
 			if (Position.X < Texture.Width) {
-				Hexwrench.Draw.SpriteBatch.Draw(Texture, Position, null, Color.White * Alpha, Rotation, Vector2.Zero, Scale, SpriteEffects.None, Depth);
+				spriteBatch.Draw(Texture, Position, null, Color.White * Alpha, Rotation, Vector2.Zero, Scale, SpriteEffects.None, Depth);
 			}
 				
-			Hexwrench.Draw.SpriteBatch.Draw(Texture, Position - new Vector2(Texture.Width, 0), null, Color.White * Alpha, Rotation, Vector2.Zero, Scale, SpriteEffects.None, Depth);
+			spriteBatch.Draw(Texture, Position - new Vector2(Texture.Width, 0), null, Color.White * Alpha, Rotation, Vector2.Zero, Scale, SpriteEffects.None, Depth);
 		}
 	}
 }

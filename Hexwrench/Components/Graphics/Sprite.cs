@@ -83,10 +83,10 @@ namespace Hexwrench
 			}
 		}
 
-		public override void Draw (GameTime gameTime)
+		public override void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			Hexwrench.Draw.SpriteBatch.Draw(Texture, GameObject.Position.Floor(), null, currentFrameBounds, Origin, Rotation, Scale, Color, Effects, Depth);
-		}
+            spriteBatch.Draw(Texture, GameObject.Position.Floor(), null, currentFrameBounds, Origin, Rotation, Scale, Color, Effects, Depth);
+        }
 
 		public void ResetAnimation ()
 		{

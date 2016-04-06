@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\Graphics\Sprite.cs" />
+    <Compile Include="Config\Config.cs" />
     <Compile Include="Draw\Draw.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Components\Graphics\GraphicsComponent.cs" />
@@ -75,11 +76,11 @@
     <Compile Include="Components\Input\InputTypes\GamepadData.cs" />
     <Compile Include="Components\Input\InputTypes\KeyboardData.cs" />
     <Compile Include="Components\Input\InputComponent.cs" />
-    <Compile Include="GameObjects\Scene.cs" />
+    <Compile Include="Scenes\Layer.cs" />
+    <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Components\Graphics\Background.cs" />
     <Compile Include="Components\Colliders\ColliderComponent.cs" />
     <Compile Include="Components\Colliders\RectangleCollider.cs" />
-    <Compile Include="Config\Config.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -97,11 +98,5 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Components\Logic\" />
-    <Folder Include="Components\Input\" />
-    <Folder Include="Components\Colliders\" />
-    <Folder Include="Config\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
